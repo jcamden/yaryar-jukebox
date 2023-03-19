@@ -29,8 +29,8 @@ export const playTrack = (str: string) => {
     },
     (err: any) => {
       if (err) {
+        console.log("There was an error:");
         console.log(JSON.stringify(err, null, 3));
-        throw err;
       }
     }
   );
