@@ -1,8 +1,14 @@
-import { audio } from "./playTrack";
+import { audio, setCurrentTrack } from "./playTrack";
 
 export const controls: { [key: string]: () => void } = {
-  escape: () => {
+  space: () => {
     audio.kill();
+    setCurrentTrack("");
+  },
+  escape: () => {
+    if (audio) {
+      audio.kill();
+    }
     process.exit();
   },
 };

@@ -8,7 +8,11 @@ export const player = playSound({});
 
 export let audio: ChildProcess;
 
-let currentTrack: string;
+export let currentTrack: string;
+
+export const setCurrentTrack = (str: string) => {
+  currentTrack = str;
+};
 
 export const playTrack = (str: string) => {
   if (currentTrack === str) {
