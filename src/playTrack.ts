@@ -3,6 +3,7 @@ import { ChildProcess } from "child_process";
 import playSound from "play-sound";
 
 import { currentTracks } from "./currentTracks";
+import { stopAudio } from "./utils";
 
 export const player = playSound({});
 
@@ -21,9 +22,7 @@ export const playTrack = (str: string) => {
 
   currentTrack = str;
 
-  if (audio) {
-    audio.kill();
-  }
+  stopAudio(audio);
 
   audio = player.play(
     `assets/${currentTracks[str]}`,
