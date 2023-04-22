@@ -28,7 +28,7 @@ export const playTrack = (str: string) => {
     `assets/${currentTracks[str]}`,
     {
       // timeout: 5000
-      mplayer: ["-volume", 10],
+      mplayer: ["-volume", 100],
     },
     (err: any) => {
       if (err) {
