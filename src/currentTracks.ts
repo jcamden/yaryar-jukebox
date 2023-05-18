@@ -1,5 +1,3 @@
-// "Beatles_AskMeWhy.mp3"
-
 export const currentTracks: { [key: string]: string } = {
   // num
   "1": "Beatles_AskMeWhy.mp3",
@@ -9,6 +7,7 @@ export const currentTracks: { [key: string]: string } = {
   "5": "Petra_TheColoringSong.mp3",
   //
   q: "Bach - Brandenburg Concerto No. 1 in F major, I Allegro, BWV 1046 (Freiburger Barockorchester)",
+  w: "test.wav",
   // alpha
   a: "LuluKids_PussyCatPussyCat.mp3",
   s: "Beatles_ThankYouGirl.mp3",
@@ -17,8 +16,8 @@ export const currentTracks: { [key: string]: string } = {
   g: "Bach_MinuetinGMajor.mp3",
   h: "Chopin_NocturneOp9No2.mp3",
   j: "McCartney_ListenToWhatTheManSays.mp3",
-  k: "BabyEinsteinMusicBoxOrchestra_Teapot.mp3",
-  l: "PattyShukla_ChooChooTrain.mp3",
+  k: "Baby Einstein Music Box Orchestra - Teapot.mp3",
+  l: "Patty Shukla - Choo Choo Train.mp3",
   ";": "Satie_GymnopedieNo1.mp3",
   "'": "Bach_WellTemperedClavier_Book1.mp3",
 };
