@@ -1,6 +1,7 @@
 import playSound from "play-sound";
 
 import { currentTracks } from "./currentTracks";
+import { printHomeScreen, printTrack } from "./messages";
 import {
   audio,
   currentTrack,
@@ -21,13 +22,16 @@ export const playTrack = (str: string) => {
     stopAudio();
   }
 
+  const filename = currentTracks[str];
+
   setAudio(
     player.play(
-      `assets/${currentTracks[str]}`,
+      `assets/${filename}`,
       {
         // timeout: 5000
         mplayer: ["-volume", 100],
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (err: any) => {
         if (err) {
           if (err !== 1) {
@@ -43,8 +47,11 @@ export const playTrack = (str: string) => {
   onAudioExit(() => {
     if (currentTrack === str) {
       setCurrentTrack("");
+      printHomeScreen();
     }
   });
 
   setCurrentTrack(str);
+
+  printTrack(filename);
 };

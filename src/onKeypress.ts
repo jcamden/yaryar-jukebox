@@ -8,8 +8,8 @@ interface Key {
 }
 
 export const onKeypress = (str: string, key: Key) => {
-  console.log(str);
-  console.log(key);
+  // console.log(str);
+  // console.log(key);
 
   if (Object.keys(currentTracks).includes(key.sequence)) {
     playTrack(str);

@@ -1,9 +1,10 @@
 import readline from "readline";
 
+import { printHomeScreen } from "./messages";
 import { onKeypress } from "./onKeypress";
 
 export const startServer = () => {
-  console.log("Welcome to Yaryar Jukebox.");
+  printHomeScreen();
 
   readline.emitKeypressEvents(process.stdin);
 
