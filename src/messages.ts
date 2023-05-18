@@ -46,88 +46,77 @@ export const printMessage = (msg: string, options?: PrintMessageOptions) => {
 
 export const printHomeScreen = () => {
   console.clear();
-
+  cfonts.say("(Press escape to escape)   ", {
+    font: "console", // define the font face
+    align: "left", // define text alignment
+    colors: ["gray"], // define all colors
+    // background: "transparent", // define the background color, you can also use `backgroundColor` here as key
+    letterSpacing: 0.5, // define letter spacing
+    lineHeight: 0.5, // define the line height
+    // space: true, // define if the output text should have empty lines on top and on the bottom
+    // maxLength: "0", // define how many character can be on one line
+    // gradient: ["#383838", "#262626"], // define your two gradient colors
+    // independentGradient: false, // define if you want to recalculate the gradient for each new line
+    // transitionGradient: true, // define if this is a transition between colors directly
+    // env: "node", // define the environment cfonts is being executed in
+  });
   cfonts.say(
     `
-  
-
 
 
 
   
 Welcome to`,
     {
-      font: "tiny", // define the font face
-      align: "center", // define text alignment
-      // colors: ["system"], // define all colors
-      // background: "transparent", // define the background color, you can also use `backgroundColor` here as key
-      // letterSpacing: 1, // define letter spacing
-      // lineHeight: 1, // define the line height
-      // space: true, // define if the output text should have empty lines on top and on the bottom
-      // maxLength: "0", // define how many character can be on one line
-      gradient: ["#6b40cf", "#5328b8"], // define your two gradient colors
-      // independentGradient: false, // define if you want to recalculate the gradient for each new line
-      transitionGradient: true, // define if this is a transition between colors directly
-      // env: "node", // define the environment cfonts is being executed in
+      font: "tiny",
+      align: "center",
+      gradient: ["#6b40cf", "#5328b8"],
+      transitionGradient: true,
     }
   );
   cfonts.say("   Yaryar Jukebox   ", {
-    font: "pallet", // define the font face
-    align: "center", // define text alignment
-    // colors: ["system"], // define all colors
-    // background: "transparent", // define the background color, you can also use `backgroundColor` here as key
-    // letterSpacing: 1, // define letter spacing
-    // lineHeight: 1, // define the line height
-    // space: true, // define if the output text should have empty lines on top and on the bottom
-    // maxLength: "0", // define how many character can be on one line
-    gradient: ["red", "blue"], // define your two gradient colors
-    independentGradient: false, // define if you want to recalculate the gradient for each new line
-    transitionGradient: false, // define if this is a transition between colors directly
-    // env: "node", // define the environment cfonts is being executed in
+    font: "pallet",
+    align: "center",
+    gradient: ["red", "blue"],
+    independentGradient: false,
+    transitionGradient: false,
   });
   cfonts.say("Press spacebar to view library", {
-    font: "console", // define the font face
-    align: "center", // define text alignment
-    // colors: ["system"], // define all colors
-    // background: "transparent", // define the background color, you can also use `backgroundColor` here as key
-    letterSpacing: 0.5, // define letter spacing
-    lineHeight: 1, // define the line height
-    // space: true, // define if the output text should have empty lines on top and on the bottom
-    // maxLength: "0", // define how many character can be on one line
-    gradient: ["white", "green"], // define your two gradient colors
-    // independentGradient: false, // define if you want to recalculate the gradient for each new line
-    transitionGradient: true, // define if this is a transition between colors directly
-    // env: "node", // define the environment cfonts is being executed in
+    font: "console",
+    align: "center",
+    letterSpacing: 0.5,
+    lineHeight: 1,
+    gradient: ["white", "green"],
+    transitionGradient: true,
   });
 };
 
 export const printTrack = (filename: string) => {
-  const test = [
-    " ",
-    " ",
-    ...filename.replace(/.mp3/, "").split(" - ").reverse(),
-  ];
+  const metadata = filename
+    .replace(/.mp3/, "")
+    .split(" - ")
+    .reverse()
+    .map((chunk) => chunk.split("_"))
+    .flat();
+  const whitespace = metadata.length <= 3 ? [" ", " "] : [" "];
+
+  const metadataWithWhitespace = [...whitespace, ...metadata];
 
   console.clear();
-  test.forEach((metadatum) => {
+  metadataWithWhitespace.forEach((metadatum) => {
     cfonts.say(metadatum, {
-      font: "block", // define the font face
-      align: "center", // define text alignment
-      // colors: ["system"], // define all colors
-      // background: "transparent", // define the background color, you can also use `backgroundColor` here as key
-      // letterSpacing: 1, // define letter spacing
-      lineHeight: 10, // define the line height
-      space: true, // define if the output text should have empty lines on top and on the bottom
-      // maxLength: "0", // define how many character can be on one line
-      gradient: [randomHexColorCode(), randomHexColorCode()], // define your two gradient colors
-      independentGradient: false, // define if you want to recalculate the gradient for each new line
-      transitionGradient: true, // define if this is a transition between colors directly
-      // env: "node", // define the environment cfonts is being executed in
+      font: "block",
+      align: "center",
+      lineHeight: 10,
+      space: true,
+      gradient: [randomHexColorCode(), randomHexColorCode()],
+      independentGradient: false,
+      transitionGradient: true,
     });
   });
 };
 
-const clean = /(\{|\}|"|.mp3|.wav|,(?!["{}[\]]))/g;
+const clean = /(\{|\}|"|:|.mp3|.wav|,(?!["{}[\]])|row[0-9])/g;
 
 export const printLibrary = () => {
   console.clear();

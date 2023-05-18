@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "build": "pnpm tsc --build",
-    "dev": "pnpm nodemon -I src/index.ts",
+    "dev": "pnpm ts-node src/index.ts",
+    "watch": "pnpm nodemon -I src/index.ts",
     "start": "pnpm node build/index.js"
   },
   "keywords": [],
