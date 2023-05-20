@@ -1,7 +1,8 @@
 import readline from "readline";
 
-import { printHomeScreen } from "./messages";
-import { onKeypress } from "./onKeypress";
+import { onKeypress } from "../onKeypress";
+
+import { printHomeScreen } from ".";
 
 export const startServer = () => {
   printHomeScreen();

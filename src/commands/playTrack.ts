@@ -1,15 +1,21 @@
 import playSound from "play-sound";
 
-import { currentTracks } from "./currentTracks";
-import { printHomeScreen, printTrack } from "./messages";
+import {
+  createGradient,
+  printHomeScreen,
+  printTrackRenderLoop,
+} from "./messages";
+import { stopAudio } from "./stopAudio";
 import {
   audio,
   currentTrack,
+  isShowingLibrary,
   onAudioExit,
   setAudio,
   setCurrentTrack,
-  stopAudio,
-} from "./state";
+  toggleIsShowingLibrary,
+} from "../state";
+import { tracks } from "../tracks";
 
 const player = playSound({});
 
@@ -22,7 +28,7 @@ export const playTrack = (str: string) => {
     stopAudio();
   }
 
-  const filename = currentTracks[str];
+  const filename = tracks[str];
 
   setAudio(
     player.play(
@@ -52,6 +58,10 @@ export const playTrack = (str: string) => {
   });
 
   setCurrentTrack(str);
+  if (isShowingLibrary) {
+    toggleIsShowingLibrary();
+  }
 
-  printTrack(filename);
+  console.clear();
+  printTrackRenderLoop(filename, createGradient());
 };

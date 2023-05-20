@@ -1,15 +1,11 @@
 import { ChildProcess } from "child_process";
 
-import { currentTracks } from "./currentTracks";
+import { tracks } from "./tracks";
 
 export let audio: ChildProcess;
 
 export const setAudio = (newAudio: ChildProcess) => {
   audio = newAudio;
-};
-
-export const stopAudio = () => {
-  audio.kill();
 };
 
 export const onAudioExit = (callback: () => void) => {
@@ -22,7 +18,7 @@ export let currentFilename = "";
 
 export const setCurrentTrack = (str: string) => {
   currentTrack = str;
-  currentFilename = currentTracks[str] ?? "";
+  currentFilename = tracks[str] ?? "";
 };
 
 export let isShowingLibrary = false;

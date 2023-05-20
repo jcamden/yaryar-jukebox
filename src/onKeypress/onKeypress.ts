@@ -1,6 +1,6 @@
 import { controls } from "./controls";
-import { currentTracks } from "./currentTracks";
-import { playTrack } from "./playTrack";
+import { playTrack } from "../commands/playTrack";
+import { tracks } from "../tracks";
 
 interface Key {
   name: string;
@@ -11,7 +11,7 @@ export const onKeypress = (str: string, key: Key) => {
   // console.log(str);
   // console.log(key);
 
-  if (Object.keys(currentTracks).includes(key.sequence)) {
+  if (Object.keys(tracks).includes(key.sequence)) {
     playTrack(str);
   }
 

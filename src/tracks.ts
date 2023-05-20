@@ -1,4 +1,5 @@
-export const currentTracks: { [key: string]: string } = {
+export const tracks: { [key: string]: string } = {
+  "`": "test.wav",
   "1": "Bach - Brandenburg Concerto - No 1, I Allegro.mp3",
   "2": "Bach - Brandenburg Concerto - No 1, III Allegro.mp3",
   "3": "Bach - Brandenburg Concerto - No 1, IV Menuetto.mp3",
@@ -21,7 +22,7 @@ export const currentTracks: { [key: string]: string } = {
   u: "Shining Force II - Warrior of the Reviving Light.mp3",
   i: "Shining Force II - Welcome To Our Town.mp3",
   o: "Shining Force II - Dwarf.mp3",
-  p: "Shining Force II - Elven Town, Martin Fowler.mp3",
+  p: "Shining Force II - Martin Fowler - Elven Town.mp3",
   "[": "Shining Force II - Wings.mp3",
   "]": "Paul McCartney - Silly Love Songs.mp3",
   row3: "",
@@ -37,8 +38,8 @@ export const currentTracks: { [key: string]: string } = {
   ";": "Satie - Gymnopedie No1.mp3",
   "'": "Bach - Well Tempered Clavier, Book 1.mp3",
   row4: "",
-  z: "Mega Man 3 - Intro on Piano, Bcutter.mp3",
-  x: "Mega Man 3 - Magnet Man, Bcutter.mp3",
+  z: "Mega Man 3 - Bcutter - Intro on Piano.mp3",
+  x: "Mega Man 3 - Bcutter - Magnet Man.mp3",
   c: "Beatles - Ask Me Why.mp3",
   v: "Beatles - Words of Love.mp3",
   b: "Petra - More Power to Ya.mp3",
