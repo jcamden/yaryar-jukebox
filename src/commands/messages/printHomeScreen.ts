@@ -21,13 +21,12 @@ export const printHomeScreen = () => {
   
   
   
-    
-  Welcome to`,
+Welcome to`,
     {
-      font: "tiny",
+      font: "chrome",
       align: "center",
-      gradient: ["#6b40cf", "#5328b8"],
-      transitionGradient: true,
+      colors: ["#6b40cf", "white", "#6b40cf"],
+      transitionGradient: false,
     }
   );
   cfonts.say("   Yaryar Jukebox   ", {

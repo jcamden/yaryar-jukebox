@@ -7,7 +7,7 @@
     "build": "pnpm tsc --build",
     "dev": "pnpm ts-node src/index.ts",
     "watch": "pnpm nodemon -I src/index.ts",
-    "start": "pnpm node build/index.js"
+    "start": "FORCE_COLOR=3 pnpm node build/index.js"
   },
   "keywords": [],
   "author": "",
