@@ -26,3 +26,9 @@ export let isShowingLibrary = false;
 export const toggleIsShowingLibrary = () => {
   isShowingLibrary = !isShowingLibrary;
 };
+
+export let isRenderLoopEnabled = false;
+
+export const toggleIsRenderLoopEnabled = () => {
+  isRenderLoopEnabled = !isRenderLoopEnabled;
+};

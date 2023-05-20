@@ -1,7 +1,11 @@
 import cfonts from "cfonts";
 
 import { rngGradientStops, rngRgbValue, rngUpOrDown } from "./utils";
-import { currentFilename, isShowingLibrary } from "../../state";
+import {
+  currentFilename,
+  isRenderLoopEnabled,
+  isShowingLibrary,
+} from "../../state";
 
 type Gradient = number[][];
 
@@ -67,7 +71,7 @@ export const printTrack = (filename: string, gradient: Gradient) => {
 
 export const printTrackRenderLoop = (filename, gradient) => {
   printTrack(filename, gradient);
-  if (currentFilename === filename) {
+  if (currentFilename === filename && isRenderLoopEnabled) {
     setTimeout(() => {
       if (currentFilename === filename && !isShowingLibrary) {
         const nextGradient = incrementGradient(gradient);
