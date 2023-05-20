@@ -3,6 +3,7 @@ import cfonts from "cfonts";
 import { rngGradientStops, rngRgbValue, rngUpOrDown } from "./utils";
 import {
   currentFilename,
+  isPrintTrackGradientEnabled,
   isRenderLoopEnabled,
   isShowingLibrary,
 } from "../../state";
@@ -63,9 +64,10 @@ export const printTrack = (filename: string, gradient: Gradient) => {
     align: "center",
     lineHeight: 5,
     space: true,
-    gradient: nextGradient,
+    colors: isPrintTrackGradientEnabled ? undefined : ["white", "candy"],
+    gradient: isPrintTrackGradientEnabled ? nextGradient : undefined,
     independentGradient: false,
-    transitionGradient: true,
+    transitionGradient: isPrintTrackGradientEnabled ? true : false,
   });
 };
 

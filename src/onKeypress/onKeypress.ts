@@ -8,8 +8,8 @@ interface Key {
 }
 
 export const onKeypress = (str: string, key: Key) => {
-  // console.log(str);
-  // console.log(key);
+  console.log(str);
+  console.log(key);
 
   if (Object.keys(tracks).includes(key.sequence)) {
     playTrack(str);
@@ -17,5 +17,9 @@ export const onKeypress = (str: string, key: Key) => {
 
   if (Object.keys(controls).includes(key.name)) {
     controls[key.name]();
+  }
+
+  if (Object.keys(controls).includes(key.sequence)) {
+    controls[key.sequence]();
   }
 };

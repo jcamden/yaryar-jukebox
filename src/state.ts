@@ -32,3 +32,9 @@ export let isRenderLoopEnabled = false;
 export const toggleIsRenderLoopEnabled = () => {
   isRenderLoopEnabled = !isRenderLoopEnabled;
 };
+
+export let isPrintTrackGradientEnabled = false;
+
+export const toggleisPrintTrackGradientEnabled = () => {
+  isPrintTrackGradientEnabled = !isPrintTrackGradientEnabled;
+};

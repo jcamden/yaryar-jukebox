@@ -1,5 +1,8 @@
 import { printHomeScreen, stopAudio, toggleLibrary } from "../commands";
-import { toggleIsRenderLoopEnabled } from "../state";
+import {
+  toggleIsRenderLoopEnabled,
+  toggleisPrintTrackGradientEnabled,
+} from "../state";
 
 export const controls: { [key: string]: () => void } = {
   backspace: () => {
@@ -15,5 +18,8 @@ export const controls: { [key: string]: () => void } = {
   },
   tab: () => {
     toggleIsRenderLoopEnabled();
+  },
+  "\\": () => {
+    toggleisPrintTrackGradientEnabled();
   },
 };
