@@ -1,5 +1,6 @@
 import { controls } from "./controls";
 import { playTrack } from "../commands/playTrack";
+import { currentTrack, settingsMap } from "../state";
 import { tracks } from "../tracks";
 
 interface Key {
@@ -8,10 +9,13 @@ interface Key {
 }
 
 export const onKeypress = (str: string, key: Key) => {
-  console.log(str);
-  console.log(key);
+  // console.log(str);
+  // console.log(key);
 
   if (Object.keys(tracks).includes(key.sequence)) {
+    if (!settingsMap.allowInterrupt && currentTrack) {
+      return;
+    }
     playTrack(str);
   }
 

@@ -1,8 +1,6 @@
 import { printHomeScreen, stopAudio, toggleLibrary } from "../commands";
-import {
-  toggleIsRenderLoopEnabled,
-  toggleisPrintTrackGradientEnabled,
-} from "../state";
+import { settingsRepl } from "../settingsRepl";
+import { audio } from "../state";
 
 export const controls: { [key: string]: () => void } = {
   backspace: () => {
@@ -10,16 +8,19 @@ export const controls: { [key: string]: () => void } = {
     printHomeScreen();
   },
   escape: () => {
-    stopAudio();
+    if (audio) {
+      stopAudio();
+    }
+    console.clear();
     process.exit();
   },
   space: () => {
     toggleLibrary();
   },
-  tab: () => {
-    toggleIsRenderLoopEnabled();
-  },
+  // tab: () => {
+  //   toggleIsRenderLoopEnabled();
+  // },
   "\\": () => {
-    toggleisPrintTrackGradientEnabled();
+    settingsRepl();
   },
 };

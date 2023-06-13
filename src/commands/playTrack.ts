@@ -1,16 +1,13 @@
 import playSound from "play-sound";
 
 import {
-  createGradient,
   printHomeScreen,
   printTrack,
-  printTrackRenderLoop,
 } from "./messages";
 import { stopAudio } from "./stopAudio";
 import {
   audio,
   currentTrack,
-  isRenderLoopEnabled,
   isShowingLibrary,
   onAudioExit,
   setAudio,
@@ -65,9 +62,5 @@ export const playTrack = (str: string) => {
   }
 
   console.clear();
-  if (isRenderLoopEnabled) {
-    printTrackRenderLoop(filename, createGradient());
-  } else {
-    printTrack(filename, createGradient());
-  }
+  printTrack();
 };

@@ -27,14 +27,43 @@ export const toggleIsShowingLibrary = () => {
   isShowingLibrary = !isShowingLibrary;
 };
 
-export let isRenderLoopEnabled = false;
+export let settings = [
+  {
+    name: "allow interrupt",
+    desc: "allow a song to be interrupted by playing another song",
+    enabled: false,
+  },
+  {
+    name: "now-playing gradient",
+    desc: "apply random gradients to now-playing display",
+    enabled: false,
+  },
+  {
+    name: "now-playing render loop",
+    desc: "enable render loop to animate now-playing display",
+    enabled: false,
+  },
+];
 
-export const toggleIsRenderLoopEnabled = () => {
-  isRenderLoopEnabled = !isRenderLoopEnabled;
-};
+type Settings = typeof settings;
 
-export let isPrintTrackGradientEnabled = false;
+export const createSettingsMap = (settings: Settings) =>
+  settings.reduce((accum, setting) => {
+    const camelCaseName = setting.name.replace(/(-|\s)./g, (c) =>
+      c.substring(1).toUpperCase()
+    );
+    return { ...accum, [camelCaseName]: setting.enabled };
+  }, {});
 
-export const toggleisPrintTrackGradientEnabled = () => {
-  isPrintTrackGradientEnabled = !isPrintTrackGradientEnabled;
+interface SettingsMap {
+  allowInterrupt: false;
+  nowPlayingGradient: false;
+  nowPlayingRenderLoop: false;
+}
+
+export let settingsMap = createSettingsMap(settings) as SettingsMap;
+
+export const updateSettings = (newSettings) => {
+  settings = newSettings;
+  settingsMap = createSettingsMap(newSettings) as SettingsMap;
 };

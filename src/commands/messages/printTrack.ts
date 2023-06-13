@@ -1,12 +1,8 @@
 import cfonts from "cfonts";
 
+import { printHomeScreen } from "./printHomeScreen";
 import { rngGradientStops, rngRgbValue, rngUpOrDown } from "./utils";
-import {
-  currentFilename,
-  isPrintTrackGradientEnabled,
-  isRenderLoopEnabled,
-  isShowingLibrary,
-} from "../../state";
+import { currentFilename, isShowingLibrary, settingsMap } from "../../state";
 
 type Gradient = number[][];
 
@@ -40,7 +36,10 @@ const rgbToHex = (stop: number[]) =>
 const gradientToHex = (gradient: Gradient) =>
   gradient.map((stop) => rgbToHex(stop));
 
-export const printTrack = (filename: string, gradient: Gradient) => {
+export const printTrackNoRenderLoop = (
+  filename: string,
+  gradient: Gradient
+) => {
   const metadata = filename
     .replace(/.mp3/, "")
     .split(" - ")
@@ -64,21 +63,33 @@ export const printTrack = (filename: string, gradient: Gradient) => {
     align: "center",
     lineHeight: 5,
     space: true,
-    colors: isPrintTrackGradientEnabled ? undefined : ["white", "candy"],
-    gradient: isPrintTrackGradientEnabled ? nextGradient : undefined,
+    colors: settingsMap.nowPlayingGradient ? undefined : ["white", "candy"],
+    gradient: settingsMap.nowPlayingGradient ? nextGradient : undefined,
     independentGradient: false,
-    transitionGradient: isPrintTrackGradientEnabled ? true : false,
+    transitionGradient: settingsMap.nowPlayingGradient ? true : false,
   });
 };
 
 export const printTrackRenderLoop = (filename, gradient) => {
-  printTrack(filename, gradient);
-  if (currentFilename === filename && isRenderLoopEnabled) {
+  printTrackNoRenderLoop(filename, gradient);
+  if (currentFilename === filename && settingsMap.nowPlayingRenderLoop) {
     setTimeout(() => {
       if (currentFilename === filename && !isShowingLibrary) {
         const nextGradient = incrementGradient(gradient);
         printTrackRenderLoop(filename, nextGradient);
       }
     }, 100);
+  }
+};
+
+export const printTrack = () => {
+  if (currentFilename !== "") {
+    if (settingsMap.nowPlayingRenderLoop) {
+      printTrackRenderLoop(currentFilename, createGradient());
+    } else {
+      printTrackNoRenderLoop(currentFilename, createGradient());
+    }
+  } else {
+    printHomeScreen();
   }
 };
