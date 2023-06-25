@@ -44,7 +44,7 @@ export const tracks: { [key: string]: string } = {
   v: "Beatles - Words of Love.mp3",
   b: "Petra - More Power to Ya.mp3",
   n: "Petra - The Coloring Song.mp3",
-  m: "",
+  m: "Paul Taylor - Friday@5.mp3",
   ",": "",
   ".": "",
   "/": "",
