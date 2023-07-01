@@ -8,19 +8,20 @@ interface Key {
   sequence: string;
 }
 
+const keyboardKeys = Object.keys(tracks);
+
 export const onKeypress = (str: string, key: Key) => {
   // console.log(str);
   // console.log(key);
 
-  if (Object.keys(tracks).includes(key.sequence)) {
+  if (keyboardKeys.includes(key.sequence) || keyboardKeys.includes(key.name)) {
     if (!settingsMap.allowInterrupt && currentTrack) {
       return;
     }
     if (str) {
       playTrack(str);
     } else {
-      console.log("play sequence");
-      playTrack(key.sequence);
+      playTrack(key.name);
     }
   }
 
