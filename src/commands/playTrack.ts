@@ -1,9 +1,6 @@
 import playSound from "play-sound";
 
-import {
-  printHomeScreen,
-  printTrack,
-} from "./messages";
+import { printHomeScreen, printTrack } from "./messages";
 import { stopAudio } from "./stopAudio";
 import {
   audio,

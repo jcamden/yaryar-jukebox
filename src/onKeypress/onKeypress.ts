@@ -16,7 +16,12 @@ export const onKeypress = (str: string, key: Key) => {
     if (!settingsMap.allowInterrupt && currentTrack) {
       return;
     }
-    playTrack(str);
+    if (str) {
+      playTrack(str);
+    } else {
+      console.log("play sequence");
+      playTrack(key.sequence);
+    }
   }
 
   if (Object.keys(controls).includes(key.name)) {
@@ -27,3 +32,12 @@ export const onKeypress = (str: string, key: Key) => {
     controls[key.sequence]();
   }
 };
+
+// {
+//   sequence: '\x1BOP',
+//   name: 'f1',
+//   ctrl: false,
+//   meta: false,
+//   shift: false,
+//   code: 'OP'
+// }
