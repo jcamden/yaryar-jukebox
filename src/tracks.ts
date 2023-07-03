@@ -1,5 +1,6 @@
 export const tracks: { [key: string]: string } = {
   f1: "Stream of Praise - Jesus, You're In My Heart.mp3",
+  f2: "Stream of Praise - Love The Lord Your God.mp3",
   "`": "test.wav",
   "1": "Bach - Brandenburg Concerto - No 1, I Allegro.mp3",
   "2": "Bach - Brandenburg Concerto - No 1, III Allegro.mp3",
